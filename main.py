@@ -3,6 +3,8 @@ from itertools import cycle
 import discord
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
+import urllib.parse, urllib.request, re
+
 
 # import praw
 
