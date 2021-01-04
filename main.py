@@ -43,5 +43,15 @@ async def on_command_error(ctx, error):
 for filename in os.listdir('./cogs'):
     if filename.endswith(".py"):
         bot.load_extension(f'cogs.{filename[:-3]}')
+        
+@bot.command()
+async def youtube(ctx,search):
+
+
+	search_keyword=search
+	html = urllib.request.urlopen("https://www.youtube.com/results?search_query=" + search_keyword)
+	video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
+	await ctx.send("https://www.youtube.com/watch?v=" + video_ids[0])
+
 
 bot.run(os.getenv("TOKEN"))
